@@ -89,7 +89,7 @@ public class ControladorPostulante extends HttpServlet {
             PostulanteDAO postulanteDAO = new PostulanteDAO();
             postulanteDAO.agregar(postulante);
 
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
