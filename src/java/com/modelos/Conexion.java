@@ -15,9 +15,9 @@ import java.sql.DriverManager;
 public class Conexion {
     
     private Connection con;
-    private String user = "bolsa_trabajo";
-    private String password = "123";
-    private String url = "jdbc:oracle:thin:@localhost:1521:XE";
+    private final String user = "system";
+    private final String password = "12345";
+    private final String url = "jdbc:oracle:thin:@localhost:1521:XE";
     
     public Connection getConnection(){
         try{
