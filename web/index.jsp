@@ -40,6 +40,7 @@
                     <li class="active"><a href="#header">Home <span class="sr-only">(current)</span></a></li>
                     <li><a href="#choose">Nosotros</a></li>
                     <li><a href="#objetivo">Misión</a></li>
+                    <li><a href="#acerca">Acerca de</a></li>
                     <li><a href="#team">Equipo</a></li>
                   </ul>
                 </div><!-- /.navbar-collapse -->
@@ -134,7 +135,45 @@
                 </div>
             </section>
             
-            <!-- Team -->
+            <!-- Equipo -->
+            <section id="acerca" class="choose overlay-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="title-box">
+                                <h2 class="section-title">Acerca de</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="choose-box">
+                                <span class="choose-icon ion-briefcase"></span>
+                                <p class="choose-detail">
+                                    Las Empresas podrán ofertar puestos de trabajo para que los 
+                                    vacantes puedan visualizar esta información y ponerse en 
+                                    contacto con las Empresas.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-6">
+                            <div class="choose-box">
+                                <span class="choose-icon ion-man"></span>
+                                <p class="choose-detail">
+                                    Selección del personal conveniente para el perfil solicitante 
+                                    por la empresa: en las que se incluye, puesto y actividades 
+                                    a realizar por la vacante.
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- acerca de -->
             <section id="team" class="team">
                 <div class="container">
                     <div class="row">
