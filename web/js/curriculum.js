@@ -146,8 +146,8 @@ function agregarCertificacion(){
     var institucionCertificacion = $('#FormCertificaciones input[name="institucionCertificacion[]"]');
 
     var inputs = '<input type="hidden" value=" ' + tituloCertificacion.val() + ' " name="tituloCertificacion[]"/> <input type="hidden" value=" ' + tipoCertificacion.val() + ' " name="tipoCertificacion[]"/>';
-    inputs += '<input type="hidden" value=" ' + codigoCertificacion.val() + ' " name="paisCongreso[]"/>';
-    inputs += '<input type="hidden" value=" ' + institucionCertificacion.val() + ' " name="anfitrionCongreso[]"/>';
+    inputs += '<input type="hidden" value=" ' + codigoCertificacion.val() + ' " name="codigoCertificacion[]"/>';
+    inputs += '<input type="hidden" value=" ' + institucionCertificacion.val() + ' " name="institucionCertificacion[]"/>';
   
     var card = $('<div class="card my-3"></div>');
 

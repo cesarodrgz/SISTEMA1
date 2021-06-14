@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author rodez
  */
-public class Congresos {
+public class Congreso {
     private int id;
     private String nombre;
     private String lugar;
@@ -19,7 +19,7 @@ public class Congresos {
     private String anfitrion;
     private Date fecha;
 
-    public Congresos() {
+    public Congreso() {
     }
 
     public int getId() {
