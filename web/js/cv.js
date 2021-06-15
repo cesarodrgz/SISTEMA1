@@ -5,17 +5,13 @@ function agregarConocimientosAcademicos() {
     var nombreTitulo = $('#FormConocimientosAcademicos input[name="nombreTitulo"]');
     var inputs = '<input type="hidden" value=" ' + nombreInstitucion.val() + ' " name="nombreInstitucion[]"/> <input type="hidden" value=" ' + nombreTitulo.val() + ' " name="nombreTitulo[]"/>';
 
-    var card = $('<div class="card my-3"></div>');
+    var card = $('<div class="card-cv my-3"></div>');
+    card.append(botonEliminar(card));
 
-    var botonEliminar = document.createElement("button");
-    botonEliminar.classList.add("btn", "btn-danger");
-    botonEliminar.addEventListener('click', eliminarComponente(card));
-    botonEliminar.innerHTML = "Eliminar";
-
-    var cardBody = $('<div class="card-body"><h3>' + nombreInstitucion.val() + '</h3><p>' + nombreTitulo.val() + '</p>' + inputs + '</div>');
-    cardBody.append(botonEliminar);
+    var cardHeader = $('<div class="card-header-cv mb-2"><h3 class="card-cv-title">' + nombreTitulo.val() + '</h3><span>17/Junio/2021</span></div>');
+    var cardBody = $('<div class="card-body-cv"><p class="card-cv-text">' + nombreInstitucion.val() + '</p>' + inputs + '</div>');
+    card.append(cardHeader);
     card.append(cardBody);
-
 
     $('#card-conocimientos-academicos').append(card);
 
@@ -30,17 +26,13 @@ function agregarPremio() {
     var descripcionPremio = $('#FormPremios input[name="descripcionPremio"]');
     var inputs = '<input type="hidden" value=" ' + nombrePremio.val() + ' " name="nombrePremio[]"/> <input type="hidden" value=" ' + descripcionPremio.val() + ' " name="descripcionPremio[]"/>';
 
-    var card = $('<div class="card my-3"></div>');
+    var card = $('<div class="card-cv my-3"></div>');
+    card.append(botonEliminar(card));
 
-    var botonEliminar = document.createElement("button");
-    botonEliminar.classList.add("btn", "btn-danger");
-    botonEliminar.addEventListener('click', eliminarComponente(card));
-    botonEliminar.innerHTML = "Eliminar";
-
-    var cardBody = $('<div class="card-body"><h3>' + nombrePremio.val() + '</h3><p>' + descripcionPremio.val() + '</p>' + inputs + '</div>');
-    cardBody.append(botonEliminar);
+    var cardHeader = $('<div class="card-header-cv mb-2"><h3 class="card-cv-title">' + nombrePremio.val() + '</h3><span>17/Junio/2021</span></div>');
+    var cardBody = $('<div class="card-body-cv"><p class="card-cv-text">' + descripcionPremio.val() + '</p>' + inputs + '</div>');
+    card.append(cardHeader);
     card.append(cardBody);
-
 
     $('#card-premios').append(card);
 
@@ -55,17 +47,13 @@ function agregarLaborSocial() {
     var descripcionLaborSocial = $('#FormLaborSocial input[name="descripcionLaborSocial"]');
     var inputs = '<input type="hidden" value=" ' + nombreLaborSocial.val() + ' " name="nombreLaborSocial[]"/> <input type="hidden" value=" ' + descripcionLaborSocial.val() + ' " name="descripcionLaborSocial[]"/>';
 
-    var card = $('<div class="card my-3"></div>');
+    var card = $('<div class="card-cv my-3"></div>');
+    card.append(botonEliminar(card));
 
-    var botonEliminar = document.createElement("button");
-    botonEliminar.classList.add("btn", "btn-danger");
-    botonEliminar.addEventListener('click', eliminarComponente(card));
-    botonEliminar.innerHTML = "Eliminar";
-
-    var cardBody = $('<div class="card-body"><h3>' + nombreLaborSocial.val() + '</h3><p>' + descripcionLaborSocial.val() + '</p>' + inputs + '</div>');
-    cardBody.append(botonEliminar);
+    var cardHeader = $('<div class="card-header-cv mb-2"><h3 class="card-cv-title">' + nombreLaborSocial.val() + '</h3><span>17/Junio/2021</span></div>');
+    var cardBody = $('<div class="card-body-cv"><p class="card-cv-text">' + descripcionLaborSocial.val() + '</p>' + inputs + '</div>');
+    card.append(cardHeader);
     card.append(cardBody);
-
 
     $('#card-labores-sociales').append(card);
 
@@ -84,18 +72,15 @@ function agregarLibro() {
     var inputs = '<input type="hidden" value=" ' + tituloLibro.val() + ' " name="tituloLibro[]"/> <input type="hidden" value=" ' + lugarPublicacionLibro.val() + ' " name="lugarPublicacionLibro[]"/>';
     inputs += '<input type="hidden" value=" ' + edicionLibro.val() + ' " name="edicionLibro[]"/>';
     inputs += '<input type="hidden" value=" ' + isbnLibro.val() + ' " name="isbnLibro[]"/>';
-  
-    var card = $('<div class="card my-3"></div>');
 
-    var botonEliminar = document.createElement("button");
-    botonEliminar.classList.add("btn", "btn-danger");
-    botonEliminar.addEventListener('click', eliminarComponente(card));
-    botonEliminar.innerHTML = "Eliminar";
+    var card = $('<div class="card-cv my-3"></div>');
+    card.append(botonEliminar(card));
 
-    var cardBody = $('<div class="card-body"><h3>' + tituloLibro.val() + '</h3><p>' + lugarPublicacionLibro.val() + '</p>' + inputs + '</div>');
-    cardBody.append(botonEliminar);
+
+    var cardHeader = $('<div class="card-header-cv mb-2"><h3 class="card-cv-title">' + tituloLibro.val() + '</h3><span>17/Junio/2021</span></div>');
+    var cardBody = $('<div class="card-body-cv"><p class="card-cv-text">' + lugarPublicacionLibro.val() + ', ' + edicionLibro.val() + '</p>' + inputs + '</div>');
+    card.append(cardHeader);
     card.append(cardBody);
-
 
     $('#card-libros').append(card);
 
@@ -116,18 +101,14 @@ function agregarCongreso() {
     var inputs = '<input type="hidden" value=" ' + nombreCongreso.val() + ' " name="nombreCongreso[]"/> <input type="hidden" value=" ' + lugarCongreso.val() + ' " name="lugarCongreso[]"/>';
     inputs += '<input type="hidden" value=" ' + paisCongreso.val() + ' " name="paisCongreso[]"/>';
     inputs += '<input type="hidden" value=" ' + anfitrionCongreso.val() + ' " name="anfitrionCongreso[]"/>';
-  
-    var card = $('<div class="card my-3"></div>');
 
-    var botonEliminar = document.createElement("button");
-    botonEliminar.classList.add("btn", "btn-danger");
-    botonEliminar.addEventListener('click', eliminarComponente(card));
-    botonEliminar.innerHTML = "Eliminar";
+    var card = $('<div class="card-cv my-3"></div>');
+    card.append(botonEliminar(card));
 
-    var cardBody = $('<div class="card-body"><h3>' + nombreCongreso.val() + '</h3><p>' + lugarCongreso.val() + '</p>' + inputs + '</div>');
-    cardBody.append(botonEliminar);
+    var cardHeader = $('<div class="card-header-cv mb-2"><h3 class="card-cv-title">' + nombreCongreso.val() + '</h3><span>17/Junio/2021</span></div>');
+    var cardBody = $('<div class="card-body-cv"><p class="card-cv-text">' + lugarCongreso.val() + ', ' + paisCongreso.val() + '</p>' + inputs + '</div>');
+    card.append(cardHeader);
     card.append(cardBody);
-
 
     $('#card-congresos').append(card);
 
@@ -139,7 +120,7 @@ function agregarCongreso() {
     $("#congresosModal").modal('hide');
 }
 
-function agregarCertificacion(){
+function agregarCertificacion() {
     var tituloCertificacion = $('#FormCertificaciones input[name="tituloCertificacion[]"]');
     var tipoCertificacion = $('#FormCertificaciones input[name="tipoCertificacion[]"]');
     var codigoCertificacion = $('#FormCertificaciones input[name="codigoCertificacion[]"]');
@@ -148,16 +129,13 @@ function agregarCertificacion(){
     var inputs = '<input type="hidden" value=" ' + tituloCertificacion.val() + ' " name="tituloCertificacion[]"/> <input type="hidden" value=" ' + tipoCertificacion.val() + ' " name="tipoCertificacion[]"/>';
     inputs += '<input type="hidden" value=" ' + codigoCertificacion.val() + ' " name="codigoCertificacion[]"/>';
     inputs += '<input type="hidden" value=" ' + institucionCertificacion.val() + ' " name="institucionCertificacion[]"/>';
-  
-    var card = $('<div class="card my-3"></div>');
 
-    var botonEliminar = document.createElement("button");
-    botonEliminar.classList.add("btn", "btn-danger");
-    botonEliminar.addEventListener('click', eliminarComponente(card));
-    botonEliminar.innerHTML = "Eliminar";
-
-    var cardBody = $('<div class="card-body"><h3>' + tituloCertificacion.val() + '</h3><p>' + tipoCertificacion.val() + '</p>' + inputs + '</div>');
-    cardBody.append(botonEliminar);
+    var card = $('<div class="card-cv my-3"></div>');
+    card.append(botonEliminar(card));
+    
+    var cardHeader = $('<div class="card-header-cv mb-2"><h3 class="card-cv-title">' + tituloCertificacion.val() + ' (' + tipoCertificacion.val() + ')' + '</h3><span>17/Junio/2021</span></div>');
+    var cardBody = $('<div class="card-body-cv"><p class="card-cv-text">' + institucionCertificacion.val() + '</p>' + inputs + '</div>');
+    card.append(cardHeader);
     card.append(cardBody);
 
 
@@ -171,19 +149,25 @@ function agregarCertificacion(){
     $("#certificacionesModal").modal('hide');
 }
 
-function agregarHabilidades(){
+function agregarHabilidades() {
     var listaHabilidades = $("#lista-habilidades");
-    
+
     var habilidadSelecionada = listaHabilidades.children("option:selected").text();
-   
-    
-    if(habilidades.includes(habilidadSelecionada)){ }
-    else{
+
+
+    if (habilidades.includes(habilidadSelecionada)) {
+    } else {
         var container = $("#habilidades-selecionadas");
         habilidades.push(habilidadSelecionada);
         container.append($('<span class="badge bg-primary mx-1">' + habilidadSelecionada + '</span>'));
         container.append($('<input type="hidden" value="' + habilidadSelecionada + '" name="habilidades[]" />'));
     }
+}
+
+function botonEliminar(card) {
+    var closeButton = $('<i class="bi bi-x card-cv-close"></i>');
+    closeButton.click(eliminarComponente(card));
+    return closeButton;
 }
 
 function eliminarComponente(componente) {

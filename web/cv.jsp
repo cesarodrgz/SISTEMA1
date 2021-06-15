@@ -18,6 +18,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"><!-- comment -->
+        <link href="estilo/assets/css/cv.css" rel="stylesheet"/> 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="estilo/assets/css/footer.css" />
+        <link rel="stylesheet" href="estilo/assets/css/modal-form.css" />
+        <link rel="stylesheet" href="estilo/assets/css/botones.css" />
         <title>Curriculum</title>
     </head>
     <body>
@@ -35,8 +40,8 @@
                     <div id="card-conocimientos-academicos" class="card-body">
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#conocimientosAcaModal">
-                                    + Añadir
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#conocimientosAcaModal">
+                                    <i class="bi bi-plus"></i> Añadir
                                 </button>
                             </div>
                         </div>
@@ -55,8 +60,8 @@
                     <div id="card-premios" class="card-body">
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#premiosModal">
-                                    + Añadir
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#premiosModal">
+                                    <i class="bi bi-plus"></i> Añadir
                                 </button>
                             </div>
                         </div>
@@ -71,8 +76,8 @@
                     <div id="card-labores-sociales" class="card-body">
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#laborSocialModal">
-                                    + Añadir
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#laborSocialModal">
+                                    <i class="bi bi-plus"></i> Añadir
                                 </button>
                             </div>
                         </div>
@@ -87,8 +92,8 @@
                     <div id="card-libros" class="card-body">
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#librosModal">
-                                    + Añadir
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#librosModal">
+                                    <i class="bi bi-plus"></i> Añadir
                                 </button>
                             </div>
                         </div>
@@ -103,8 +108,8 @@
                     <div id="card-congresos" class="card-body">
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#congresosModal">
-                                    + Añadir
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#congresosModal">
+                                    <i class="bi bi-plus"></i> Añadir
                                 </button>
                             </div>
                         </div>
@@ -119,8 +124,8 @@
                     <div id="card-certificaciones" class="card-body">
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#certificacionesModal">
-                                    + Añadir
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#certificacionesModal">
+                                    <i class="bi bi-plus"></i> Añadir
                                 </button>
                             </div>
                         </div>
@@ -200,7 +205,7 @@
                                 </select>
                             </div>
                             <div class="col-2">
-                                <button class="btn btn-primary" onclick="agregarHabilidades()">+ Añadir</button>
+                                <button class="btn btn-outline-primary" onclick="agregarHabilidades()"><i class="bi bi-plus"></i> Añadir</button>
                             </div>
                         </div>
                         <div class="row justify-content-center my-3">
@@ -213,12 +218,14 @@
 
                 <div class="row ">
                     <div class="col-12 my-4 d-flex justify-content-center">
-                        <button class="btn btn-success" type="submit">Guardar CV</button>
+                        <button class="btn btn-confirm" type="submit">GUARDAR CV</button>
                     </div>
                 </div>
 
             </form>
         </div>
+
+        <%@include file="footer.jsp" %>
 
         <!-- Modal Conocimientos Academicos -->
 
@@ -243,5 +250,5 @@
     <scri<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="js/curriculum.js"></script>
+    <script src="js/cv.js"></script>
 </html>
