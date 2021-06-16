@@ -45,7 +45,7 @@
                             Registrate Ahora
                         </div>-->
                         <div class="card-body">
-                            <form>
+                            <form method="POST" action="ControladorEmpresa">
 
                                 <div class="row justify-content-center">
                                     <div class="col-md-6 mb-3">
@@ -330,7 +330,7 @@
 
                                 <div class="row justify-content-start">
                                     <div class="col-2">
-                                        <button class="btn btn-success" type="submit">Registrarse</button>
+                                        <button class="btn btn-success" type="submit" name="accion" value="registrar">Registrarse</button>
                                     </div>
                                 </div>
                             </form>
