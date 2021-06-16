@@ -13,115 +13,68 @@
 
         <title>LOGIN</title>
 
-        <link href="estilo/assets/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
-        <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
-        <link href="estilo/assets/css/owl.carousel.css" rel="stylesheet">
-        <link href="estilo/assets/css/owl.carousel.theme.min.css" rel="stylesheet">
-        <link href="estilo/assets/css/main.css" rel="stylesheet">
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"><!-- comment -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link href="estilo/assets/css/footer.css" rel="stylesheet">       
+        <link href="estilo/assets/css/header.css" rel="stylesheet">
+        <link href="estilo/assets/css/registro.css" rel="stylesheet">
     </head>
-    <body data-spy="scroll" data-target="#main-navbar">
+    <body>
 
         <!-- NavigationBar Section -->
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="index.jsp">
-                    <img class="img-responsive" src="estilo/assets/images/logoues.png" alt="logo">
-                  </a>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.jsp">
+                    <img class="img-fluid logo" src="estilo/assets/images/logoues.png" alt="logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.jsp">HOME</a>
+                        </li>
+                    </ul>
                 </div>
+            </div>
+        </nav>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="main-navbar">
-                  <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.jsp">Home <span class="sr-only">(current)</span></a></li>
-                    <li><a href="registrar.jsp">Registrarme</a></li>
-                  </ul>
-                </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-                </nav>
-
-        <!-- Header Section -->
-            <header id="header" class="header overlay-dark">
+        <section id="container-enterprise-register" class="d-flex justify-content-center align-items-center">
+            <div class="container-form">    
                 <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
-                            <div class="intro-box c-table">
-                                <div class="intro ct-cell">
-                                    <h1>Iniciar Sesión</h1>
+                    <form action="" method="">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>Iniciar Session</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row justify-content-center">
+                                    <div class="col-12 mb-3 input-group">
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                        <input type="text" placeholder="Usuario" name="usuario" class="form-control"/>
+                                    </div>
+                                    <div class="col-12 mb-3 input-group">
+                                        <span class="input-group-text"><i class="bi bi-key"></i></span>
+                                        <input type="password" placeholder="Contraseña" name="contrasena" class="form-control"/>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <button class="btn btn-primary">Iniciar Session</button>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <span>¿Todavia no tienes cuenta? </span><a href="registro.jsp">Registrate aquí</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
-            </header>
-
-        <!-- Fun Facts -->
-            <section id="fun" class="fun">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="title-box">
-                                
-                                    <form>
-                                        <div class="row justify-content-md-center">
-                                            <div class="col-12 col-md-8">
-                                                <label for="usuario" class="form-label">Usuario:</label>
-                                                <input type="email" style="border: 0.1px solid black" class="form-control" id="usuario" placeholder="name@example.com"> <br>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="row justify-content-md-center">
-                                            <div class="col-12 col-md-8">
-                                                <label for="contraseña" class="form-label">Contraseña:</label>
-                                                <input type="text" style="border: 0.1px solid black" class="form-control" id="contraseña" placeholder="Contraseña"> <br>
-                                            </div> 
-                                        </div>
-                                        
-
-                                        <div class="row justify-content-md-center">
-                                            <div class="col-12 col-md-8">
-                                                <button type="button" class="btn btn-success">Ingresar</button> <br> <br>
-                                                <a href="registrar.jsp">¿No estás registrado? Registrate aquí</a> <br>
-                                                <a href="listar.jsp">LISTA</a> <br>
-                                            </div>
-                                        </div>
-                                        <br>
-                                    </form>
-                            </div>
-                        </div>
-                    </div>
-            </section>
+            </div>
+        </section>
 
         <!-- Footer -->
-            <footer class="footer">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <p>
-                                Base de Datos - Ing. De sistemas Informaticos - UES - FMO
-                            </p>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="footer-social">
-                                <a href="#"><i class="ion-social-facebook"></i></a>
-                                <a href="#"><i class="ion-social-linkedin-outline"></i></a>
-                                <a href="#"><i class="ion-social-skype-outline"></i></a>
-                                <a href="#"><i class="ion-social-twitter"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        
+        <%@include file="footer.jsp" %>
+
         <!-- Scripts -->
         <script src="estilo/assets/js/jquery-1.12.3.min.js"></script>
         <script src="estilo/assets/js/bootstrap.min.js"></script>
