@@ -61,7 +61,7 @@
                                         <input class="form-control" type="text" placeholder="Email" name="emailEmpresa"/>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <input class="form-control" type="text" placeholder="Contraseña" name="contrasenaEmpresa"/>
+                                        <input class="form-control" type="password" placeholder="Contraseña" name="contrasenaEmpresa"/>
                                     </div>
                                 </div>
                                 <div class="row justify-content-center">

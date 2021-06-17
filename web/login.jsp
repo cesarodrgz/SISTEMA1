@@ -43,7 +43,7 @@
         <section id="container-enterprise-register" class="d-flex justify-content-center align-items-center">
             <div class="container-form">    
                 <div class="container">
-                    <form action="" method="">
+                    <form action="ControladorLogin" method="POST">
                         <div class="card">
                             <div class="card-header">
                                 <h3>Iniciar Session</h3>
@@ -52,11 +52,11 @@
                                 <div class="row justify-content-center">
                                     <div class="col-12 mb-3 input-group">
                                         <span class="input-group-text"><i class="bi bi-person"></i></span>
-                                        <input type="text" placeholder="Usuario" name="usuario" class="form-control"/>
+                                        <input type="text" placeholder="Usuario" name="user" class="form-control"/>
                                     </div>
                                     <div class="col-12 mb-3 input-group">
                                         <span class="input-group-text"><i class="bi bi-key"></i></span>
-                                        <input type="password" placeholder="Contraseña" name="contrasena" class="form-control"/>
+                                        <input type="password" placeholder="Contraseña" name="password" class="form-control"/>
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <button class="btn btn-primary">Iniciar Session</button>
