@@ -46,7 +46,7 @@
                     <form action="" method="">
                         <div class="card">
                             <div class="card-header">
-                                <h3>Iniciar Session</h3>
+                                <h3>Iniciar Sesion</h3>
                             </div>
                             <div class="card-body">
                                 <div class="row justify-content-center">
@@ -59,10 +59,13 @@
                                         <input type="password" placeholder="Contraseña" name="contrasena" class="form-control"/>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <button class="btn btn-primary">Iniciar Session</button>
+                                        <button class="btn btn-primary">Iniciar Sesion</button>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <span>¿Todavia no tienes cuenta? </span><a href="registro.jsp">Registrate aquí</a>
+                                        <span>¿Todavia no tienes cuenta de empresa? </span><a href="registro.jsp">Registrate aquí</a>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <span>¿Todavia no tienes cuenta de postulante? </span><a href="registrar.jsp">Registrate aquí</a>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +76,7 @@
         </section>
 
         <!-- Footer -->
-        <%@include file="footer.jsp" %>
+        <%@include file="footer.jsp"%>
 
         <!-- Scripts -->
         <script src="estilo/assets/js/jquery-1.12.3.min.js"></script>

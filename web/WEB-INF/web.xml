@@ -4,9 +4,17 @@
         <servlet-name>ControladorEmpresa</servlet-name>
         <servlet-class>com.controladores.ControladorEmpresa</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServPrueba</servlet-name>
+        <servlet-class>prueba.ServPrueba</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorEmpresa</servlet-name>
         <url-pattern>/ControladorEmpresa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServPrueba</servlet-name>
+        <url-pattern>/ServPrueba</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
