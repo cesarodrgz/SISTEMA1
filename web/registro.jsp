@@ -41,9 +41,9 @@
             <div class="container-form">
                 <div class="container">
                     <div class="card">
-<!--                        <div class="card-header">
-                            Registrate Ahora
-                        </div>-->
+                        <div class="card-header">
+                            <h3>Registra tu empresa</h3>
+                        </div>
                         <div class="card-body">
                             <form method="POST" action="ControladorEmpresa">
 

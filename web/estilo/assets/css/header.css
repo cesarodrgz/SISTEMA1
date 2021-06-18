@@ -11,3 +11,7 @@
     height: 40px;
 }
 /*#1e2a42*/
+
+textarea{
+    resize: none;
+}

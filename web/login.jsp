@@ -64,9 +64,9 @@
                                     <div class="col-md-12 mb-3">
                                         <span>¿Todavia no tienes cuenta? </span><a href="registro.jsp">Registrate aquí</a>
                                     </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>
