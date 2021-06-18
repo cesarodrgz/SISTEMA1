@@ -17,9 +17,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"><!-- comment -->
-        <link href="estilo/assets/css/cv.css" rel="stylesheet"/> 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <%@include file="bootstrap-links.jsp" %>
+        <link rel="stylesheet" href="estilo/assets/css/cv.css"/>
+        <link rel="stylesheet" href="estilo/assets/css/header.css"/>
         <link rel="stylesheet" href="estilo/assets/css/footer.css" />
         <link rel="stylesheet" href="estilo/assets/css/modal-form.css" />
         <link rel="stylesheet" href="estilo/assets/css/botones.css" />

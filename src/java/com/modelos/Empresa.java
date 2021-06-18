@@ -6,11 +6,20 @@
 package com.modelos;
 
 public class Empresa {
+    private int id;
     private String nombre;
     private String telefono;
     private String email;
     private String contrasena;
     private String pais;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     private String direccion;
     private String nit;
     private String sector;

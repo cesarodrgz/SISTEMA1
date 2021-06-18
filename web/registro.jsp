@@ -19,7 +19,7 @@
     </head>
     <body data-spy="scroll" data-target="#main-navbar">
 
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar fixed-top navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="index.jsp">
                     <img class="img-fluid logo" src="estilo/assets/images/logoues.png" alt="logo">
@@ -340,7 +340,7 @@
             </div>
         </section>
 
-        <%@include file="footer.jsp" %>
+        <%@include file="WEB-INF/footer.jsp" %>
 
         <!-- Scripts -->
         <script src="estilo/assets/js/jquery-1.12.3.min.js"></script>

@@ -7,6 +7,7 @@ package com.modeloDAO;
 
 import com.modelos.Conexion;
 import com.modelos.Oferta;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,20 +17,27 @@ import java.sql.ResultSet;
  * @author rodez
  */
 public class OfertaDAO {
-     Connection con;
-    PreparedStatement ps;
+
+    Connection con;
+    CallableStatement cs;
     ResultSet rs;
     int r = 0;
-    
-    
-    public int agregar(Oferta o){
+
+    public int agregar(Oferta o) {
         Conexion conexion = new Conexion();
-        String sql = "call registrarOferta()";
-        try{
+        String sql = "{call registrarOferta(?,?,?,?,?,?,?)}";
+        try {
             con = conexion.getConnection();
-            ps = con.prepareStatement(sql);
-            ps.executeUpdate();
-        }catch(Exception e){
+            cs = con.prepareCall(sql);
+            cs.setInt(1,1);
+            cs.setString(2,o.getTitulo());
+            cs.setString(3,o.getDescripcion());
+            cs.setString(4,o.getJornadaLaboral());
+            cs.setString(5,o.getTipoContrato());
+            cs.setDouble(6,o.getSalario());
+            cs.setString(7,o.getCargo());
+            cs.execute();
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }

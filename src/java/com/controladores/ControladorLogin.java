@@ -43,15 +43,6 @@ public class ControladorLogin extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControladorLogin</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControladorLogin at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 
@@ -104,6 +95,7 @@ public class ControladorLogin extends HttpServlet {
                 Empresa empresa = new Empresa();
 
                 while (rs.next()) {
+                    empresa.setId(rs.getInt("idempresa"));
                     empresa.setNombre(rs.getString("nombre_empresa"));
 //                    empresa.setDescripcion(rs.getString("descripcion_empresa"));
                     empresa.setDireccion(rs.getString("direccion_empresa"));
@@ -120,7 +112,8 @@ public class ControladorLogin extends HttpServlet {
 
                 System.out.println("CONTROLADOR LOGIN");
 
-                request.getRequestDispatcher("perfil.jsp").forward(request, response);
+                response.setStatus(200);
+                response.sendRedirect("/SISTEMA1/empresa/crear-oferta");
 
             } catch (SQLException ex) {
 

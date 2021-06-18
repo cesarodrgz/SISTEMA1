@@ -33,16 +33,4 @@
    cursor: pointer;
 }
 
-.navbar {
-    padding: 0;
-    min-height: 80px;
-}
-
-.bg-primary {
-    background-color: #31436b!important;
-}
-.navbar-brand img {
-    width : 100px;
-    height: 40px;
-}
 

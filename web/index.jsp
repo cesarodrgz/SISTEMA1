@@ -223,7 +223,7 @@
         </section>
 
         <!-- Footer -->
-        <%@include file="footer.jsp" %>
+        <%@include file="WEB-INF/footer.jsp" %>
 
         <!-- Scripts -->
         <script src="estilo/assets/js/jquery-1.12.3.min.js"></script>

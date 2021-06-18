@@ -8,12 +8,21 @@ package com.modelos;
 public class Oferta {
     private int id;
     private String titulo;
+    private String cargo;
     private String descripcion;
     private String jornadaLaboral;
     private String tipoContrato;
     private double salario;
-
+    
     public Oferta() {
+    }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public int getId() {

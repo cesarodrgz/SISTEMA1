@@ -6,13 +6,25 @@
 package com.controladores;
 
 import com.modeloDAO.EmpresaDAO;
+import com.modeloDAO.OfertaDAO;
+import com.modelos.Conexion;
 import com.modelos.Empresa;
+import com.modelos.Oferta;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import oracle.jdbc.OracleTypes;
 
 /**
  *
@@ -34,15 +46,6 @@ public class ControladorEmpresa extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControladorEmpresa</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControladorEmpresa at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 
@@ -58,7 +61,56 @@ public class ControladorEmpresa extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        System.out.println("DOGET EMPRESA CONTROLADOR.");
+
+        switch (request.getRequestURI()) {
+            case "/SISTEMA1/empresa/mis-ofertas":
+                mostrarOfertas(request, response);
+            case "/SISTEMA1/empresa/crear-oferta":
+                request.getRequestDispatcher("/empresa/perfil.jsp").forward(request, response);
+                break;
+        }
+    }
+
+    private void mostrarOfertas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        HttpSession session = request.getSession(false);
+
+        if (session == null) {
+            request.getRequestDispatcher("/404.jsp").forward(request, response);
+            return;
+        }
+        Connection con = new Conexion().getConnection();
+
+        Empresa empresa = (Empresa) session.getAttribute("empresa");
+
+        ResultSet rs;
+
+        try {
+            CallableStatement cs = con.prepareCall("{ call obtenerOfertasEmpresa(?,?)}");
+            cs.setInt(1, empresa.getId());
+            cs.registerOutParameter(2, OracleTypes.CURSOR);
+            cs.execute();
+            rs = (ResultSet) cs.getObject(2);
+            ArrayList<Oferta> ofertas = new ArrayList();
+            while (rs.next()) {
+                Oferta ofe = new Oferta();
+                ofe.setId(rs.getInt("idoferta"));
+                ofe.setTitulo(rs.getString("titulo"));
+                ofe.setDescripcion(rs.getString("descripcion"));
+                ofe.setJornadaLaboral(rs.getString("jornada_laboral"));
+                ofe.setTipoContrato(rs.getString("tipo_contrato"));
+                ofe.setSalario(Double.parseDouble(rs.getString("salario")));
+                ofe.setCargo(rs.getString("cargo"));
+                ofertas.add(ofe);
+            }
+            session.setAttribute("ofertas", ofertas);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorEmpresa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        request.getRequestDispatcher("/empresa/mis-ofertas.jsp").forward(request, response);
     }
 
     /**
@@ -74,26 +126,47 @@ public class ControladorEmpresa extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
 
+        System.out.println("DOPOST EMPRESA CONTROLADOR.");
+
         String accion = request.getParameter("accion");
 
-        EmpresaDAO empresaDAO = new EmpresaDAO();
-        
         switch (accion) {
             case "registrar":
-                Empresa empresa = new Empresa();
-                empresa.setNombre(request.getParameter("nombreEmpresa"));
-                empresa.setTelefono(request.getParameter("telefonoEmpresa"));
-                empresa.setDescripcion(request.getParameter("descripcionEmpresa"));
-                empresa.setDireccion(request.getParameter("direccionEmpresa"));
-                empresa.setEmail(request.getParameter("emailEmpresa"));
-                empresa.setNit(request.getParameter("nitEmpresa"));
-                empresa.setPais(request.getParameter("paisEmpresa"));
-                empresa.setSector(request.getParameter("sectorEmpresa"));
-                empresa.setContrasena(request.getParameter("contrasenaEmpresa"));
-                empresaDAO.agregar(empresa);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                EmpresaDAO empresaDAO = new EmpresaDAO();
+                empresaDAO.agregar(crearEmpresa(request));
+                request.getRequestDispatcher("/login.jsp").forward(request, response);
+                break;
+            case "publicar":
+                OfertaDAO ofertaDAO = new OfertaDAO();
+                ofertaDAO.agregar(crearOferta(request));
+                request.getRequestDispatcher("/empresa/perfil.jsp").forward(request, response);
                 break;
         }
+    }
+
+    private Empresa crearEmpresa(HttpServletRequest request) {
+        Empresa empresa = new Empresa();
+        empresa.setNombre(request.getParameter("nombreEmpresa"));
+        empresa.setTelefono(request.getParameter("telefonoEmpresa"));
+        empresa.setDescripcion(request.getParameter("descripcionEmpresa"));
+        empresa.setDireccion(request.getParameter("direccionEmpresa"));
+        empresa.setEmail(request.getParameter("emailEmpresa"));
+        empresa.setNit(request.getParameter("nitEmpresa"));
+        empresa.setPais(request.getParameter("paisEmpresa"));
+        empresa.setSector(request.getParameter("sectorEmpresa"));
+        empresa.setContrasena(request.getParameter("contrasenaEmpresa"));
+        return empresa;
+    }
+
+    private Oferta crearOferta(HttpServletRequest request) {
+        Oferta oferta = new Oferta();
+        oferta.setTitulo(request.getParameter("tituloOferta"));
+        oferta.setCargo(request.getParameter("cargoOferta"));
+        oferta.setTipoContrato(request.getParameter("tipoContratoOferta"));
+        oferta.setJornadaLaboral(request.getParameter("jornadaLaboralOferta"));
+        oferta.setSalario(Double.parseDouble(request.getParameter("salarioOferta")));
+        oferta.setDescripcion(request.getParameter("descripcionOferta"));
+        return oferta;
     }
 
     /**
