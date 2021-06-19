@@ -1,3 +1,9 @@
+<%
+    session = request.getSession(false);
+    if (session.getAttribute("USER_ID") == null || !(session.getAttribute("TIPO") == "EMPRESA")) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.modelos.Oferta"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -28,7 +34,7 @@
                 </thead>
                 <tbody>
                     <%
-                        ArrayList<Oferta> list = (ArrayList<Oferta>) session.getAttribute("ofertas");
+                        ArrayList<Oferta> list = (ArrayList<Oferta>) session.getAttribute("OFERTAS");
                         for (Oferta o : list) {
                     %>
                     <tr>
@@ -40,7 +46,7 @@
                     <%
                         }
                     %>
-                </tbody>
+                </tbody>    
             </table>
         </div>
 

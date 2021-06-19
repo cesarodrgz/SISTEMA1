@@ -7,6 +7,7 @@ package com.controladores;
 
 import com.modelos.Conexion;
 import com.modelos.Empresa;
+import com.modelos.Postulante;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.CallableStatement;
@@ -79,41 +80,84 @@ public class ControladorLogin extends HttpServlet {
         if (user != null && pass != null) {
             try {
                 Connection con = new Conexion().getConnection();
-                CallableStatement cs = con.prepareCall("{ call obtenerUsuario(?,?,?) }");
+                CallableStatement cs = con.prepareCall("{ call obtenerUsuario(?,?,?,?) }");
                 cs.setString(1, user);
                 cs.setString(2, pass);
                 cs.registerOutParameter(3, OracleTypes.CURSOR);
+                cs.registerOutParameter(4, OracleTypes.CURSOR);
                 cs.execute();
 
-                ResultSet rs = (ResultSet) cs.getObject(3);
-
-                if (rs == null) {
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
-                    return;
-                }
+                ResultSet rse = (ResultSet) cs.getObject(3);
 
                 Empresa empresa = new Empresa();
 
-                while (rs.next()) {
-                    empresa.setId(rs.getInt("idempresa"));
-                    empresa.setNombre(rs.getString("nombre_empresa"));
-//                    empresa.setDescripcion(rs.getString("descripcion_empresa"));
-                    empresa.setDireccion(rs.getString("direccion_empresa"));
-                    empresa.setEmail(rs.getString("correo_empresa"));
-                    empresa.setPais(rs.getString("pais"));
-                    empresa.setNit(rs.getString("nit"));
-                    empresa.setTelefono(rs.getString("telefono_empresa"));
-                    empresa.setSector(rs.getString("sector"));
+                if (rse != null) {
+                    while (rse.next()) {
+                        System.out.println("WHILE RESULSET EMPRESA");
+                        empresa.setId(rse.getInt("idempresa"));
+                        empresa.setNombre(rse.getString("nombre_empresa"));
+//                    empresa.setDescripcion(rse.getString("descripcion_empresa"));
+                        empresa.setDireccion(rse.getString("direccion_empresa"));
+                        empresa.setEmail(rse.getString("correo_empresa"));
+                        empresa.setPais(rse.getString("pais"));
+                        empresa.setNit(rse.getString("nit"));
+                        empresa.setTelefono(rse.getString("telefono_empresa"));
+                        empresa.setSector(rse.getString("sector"));
+                    }
                 }
 
-                HttpSession session = request.getSession(true);
+                if (empresa.getNombre() != null) {
+                    HttpSession session = request.getSession(true);
 
-                session.setAttribute("empresa", empresa);
+                    session.setAttribute("USER_ID", empresa.getId());
+                    session.setAttribute("EMPRESA", empresa);
+                    session.setAttribute("TIPO", "EMPRESA");
 
-                System.out.println("CONTROLADOR LOGIN");
+                    System.out.println("RESULSET EMPRESA");
 
-                response.setStatus(200);
-                response.sendRedirect("/SISTEMA1/empresa/crear-oferta");
+                    response.setStatus(200);
+                    response.sendRedirect("/SISTEMA1/empresa/crear-oferta");
+                    return;
+                }
+
+                ResultSet rsp = (ResultSet) cs.getObject(4);
+
+                Postulante postulante = new Postulante();
+
+                if (rsp != null) {
+                    while (rsp.next()) {
+                        System.out.println("WHILE RESULSET POSTULANTE");
+                        postulante.setId(rsp.getInt("idpostulante"));
+                        postulante.setNombres(rsp.getString("nombres"));
+                        postulante.setApellidos(rsp.getString("apellidos"));
+                        postulante.setGenero(rsp.getString("genero"));
+//                        postulante.setGenero(rsp.getDate("f_nac"));
+                        postulante.setDocIdentidad(rsp.getString("doc_identidad"));
+                        postulante.setPasaporte(rsp.getInt("pasaporte"));
+                        postulante.setNit(rsp.getString("nit"));
+                        postulante.setNup(rsp.getString("nup"));
+                        postulante.setDireccion(rsp.getString("direccion"));
+                        postulante.setTelefono(rsp.getString("telefono"));
+                        postulante.setCorreo(rsp.getString("correo"));
+                        postulante.setRutaCV(rsp.getString("ruta_cv"));
+                    }
+                }
+
+                if (postulante.getNombres() != null) {
+                    HttpSession session = request.getSession(true);
+
+                    session.setAttribute("USER_ID", postulante.getId());
+                    session.setAttribute("POSTULANTE", postulante);
+                    session.setAttribute("TIPO", "POSTULANTE");
+
+                    System.out.println("RESULSET POSTULANTE");
+
+                    response.setStatus(200);
+                    response.sendRedirect("/SISTEMA1/postulante/crear-cv");
+                    return;
+                }
+
+                request.getRequestDispatcher("login.jsp").forward(request, response);
 
             } catch (SQLException ex) {
 

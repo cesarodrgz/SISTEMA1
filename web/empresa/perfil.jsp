@@ -1,8 +1,7 @@
 <%
-    session = request.getSession();
-    
-    if(session == null ){
-        response.sendRedirect("404.jsp");
+    session = request.getSession(false);
+    if (session.getAttribute("USER_ID") == null || !(session.getAttribute("TIPO") == "EMPRESA")) {
+        response.sendRedirect("login.jsp");
     }
 %>
 
@@ -107,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="row ">
+                <div class="row ">
                     <div class="col-12 my-4 d-flex justify-content-center">
                         <button class="btn btn-confirm" type="submit" name="accion" value="publicar">PUBLICAR</button>
                     </div>

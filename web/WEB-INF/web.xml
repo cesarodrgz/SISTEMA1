@@ -8,6 +8,10 @@
         <servlet-name>ControladorLogin</servlet-name>
         <servlet-class>com.controladores.ControladorLogin</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorPostulante</servlet-name>
+        <servlet-class>com.controladores.ControladorPostulante</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorEmpresa</servlet-name>
         <url-pattern>/ControladorEmpresa</url-pattern>
@@ -23,6 +27,10 @@
      <servlet-mapping>
         <servlet-name>ControladorEmpresa</servlet-name>
         <url-pattern>/empresa/crear-oferta</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>ControladorPostulante</servlet-name>
+        <url-pattern>/postulante/crear-cv</url-pattern>
     </servlet-mapping>
     <session-config>
 <!--        <session-timeout>

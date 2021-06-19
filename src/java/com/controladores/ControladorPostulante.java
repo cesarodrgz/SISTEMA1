@@ -5,14 +5,19 @@ package com.controladores;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import com.modeloDAO.EmpresaDAO;
+import com.modeloDAO.OfertaDAO;
 import com.modeloDAO.PostulanteDAO;
 import com.modelos.Postulante;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +26,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
@@ -40,6 +46,46 @@ public class ControladorPostulante extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        switch (request.getRequestURI()) {
+            case "/SISTEMA1/postulante/crear-cv":
+                request.getRequestDispatcher("/postulante/cv.jsp").forward(request, response);
+                break;
+        }
+
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        System.out.println("DOPOST EMPRESA POSTULANTE.");
+        registrarPostulante(request, response);
+
+    }
+
+    public void registrarPostulante(HttpServletRequest request, HttpServletResponse response) {
         ArrayList<String> list = new ArrayList();
         Postulante postulante = new Postulante();
         String filePath = "C:\\imagenes";
@@ -72,19 +118,21 @@ public class ControladorPostulante extends HttpServlet {
                 }
             }
 
+            System.out.println("SIZE: " + list.size());
+
             postulante.setNombres(list.get(0));
             postulante.setApellidos(list.get(1));
-            postulante.setGenero(list.get(2));
-            postulante.setFechaNacimiento(null); // index 3
-            postulante.setDocIdentidad(list.get(4));
-            postulante.setPasaporte(Integer.parseInt(list.get(5)));
-            postulante.setNit(list.get(6));
-            postulante.setNup(list.get(7));
-            postulante.setDireccion(list.get(8));
-            postulante.setTelefono(Integer.parseInt(list.get(9)));
-            postulante.setCorreo(list.get(10));
-            postulante.setRs(list.get(11));
-            postulante.setCv(filePath + separator + fileName);
+            postulante.setContrasena(list.get(2));
+            postulante.setGenero(list.get(3));
+            postulante.setFechaNacimiento(list.get(4));
+            postulante.setDocIdentidad(list.get(5));
+            postulante.setPasaporte(Integer.parseInt(list.get(6)));
+            postulante.setNit(list.get(7));
+            postulante.setNup(list.get(8));
+            postulante.setDireccion(list.get(9));
+            postulante.setTelefono(list.get(10));
+            postulante.setCorreo(list.get(11));
+            postulante.setRutaCV(filePath + separator + fileName);
 
             PostulanteDAO postulanteDAO = new PostulanteDAO();
             postulanteDAO.agregar(postulante);
@@ -94,37 +142,7 @@ public class ControladorPostulante extends HttpServlet {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
-       
         }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**

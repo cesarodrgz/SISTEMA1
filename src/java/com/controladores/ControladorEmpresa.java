@@ -83,13 +83,13 @@ public class ControladorEmpresa extends HttpServlet {
         }
         Connection con = new Conexion().getConnection();
 
-        Empresa empresa = (Empresa) session.getAttribute("empresa");
+        int id = (int) session.getAttribute("USER_ID");
 
         ResultSet rs;
 
         try {
             CallableStatement cs = con.prepareCall("{ call obtenerOfertasEmpresa(?,?)}");
-            cs.setInt(1, empresa.getId());
+            cs.setInt(1, id);
             cs.registerOutParameter(2, OracleTypes.CURSOR);
             cs.execute();
             rs = (ResultSet) cs.getObject(2);
@@ -105,7 +105,7 @@ public class ControladorEmpresa extends HttpServlet {
                 ofe.setCargo(rs.getString("cargo"));
                 ofertas.add(ofe);
             }
-            session.setAttribute("ofertas", ofertas);
+            session.setAttribute("OFERTAS", ofertas);
         } catch (SQLException ex) {
             Logger.getLogger(ControladorEmpresa.class.getName()).log(Level.SEVERE, null, ex);
         }

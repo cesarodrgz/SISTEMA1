@@ -16,17 +16,26 @@ public class Postulante {
     private String nombres;
     private String apellidos;
     private String genero;
-    private Date fechaNacimiento;
+    private String fechaNacimiento;
     private String docIdentidad;
     private int pasaporte;
     private String nit;
     private String nup;
     private String direccion;
-    private int telefono;
+    private String telefono;
     private String correo;
     private String rs;
-    private String cv;
+    private String rutaCV;
+    private String contrasena;
 
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+    
     public int getId() {
         return id;
     }
@@ -59,11 +68,11 @@ public class Postulante {
         this.genero = genero;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -107,11 +116,11 @@ public class Postulante {
         this.direccion = direccion;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -131,12 +140,12 @@ public class Postulante {
         this.rs = rs;
     }
 
-    public String getCv() {
-        return cv;
+    public String getRutaCV() {
+        return rutaCV;
     }
 
-    public void setCv(String cv) {
-        this.cv = cv;
+    public void setRutaCV(String cv) {
+        this.rutaCV = cv;
     }
 
     public Postulante() {

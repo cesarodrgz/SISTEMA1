@@ -7,43 +7,52 @@ package com.modeloDAO;
 
 import com.modelos.Conexion;
 import com.modelos.Postulante;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author rodez
  */
 public class PostulanteDAO {
+
     Connection con;
-    PreparedStatement ps;
+    CallableStatement ps;
     ResultSet rs;
     int r = 0;
-    
-    
-    public int agregar(Postulante p){
+
+    public int agregar(Postulante p) {
+        System.out.println("AGREGAR POSTULANTE");
+        System.out.println("DATE: " + p.getFechaNacimiento());
         Conexion conexion = new Conexion();
-        String sql = "insert into postulante values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        try{
+        String sql = "{call registroPostulante(?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+        try {
             con = conexion.getConnection();
-            ps = con.prepareStatement(sql);
-            ps.setInt(1, 1);
-            ps.setString(2, p.getNombres());
-            ps.setString(3, p.getApellidos());
-            ps.setString(4, p.getGenero());
-            ps.setDate(5, null);
-            ps.setString(6, p.getDocIdentidad());
-            ps.setInt(7, p.getPasaporte());
-            ps.setString(8, p.getNit());
-            ps.setString(9, p.getNup());
-            ps.setString(10, p.getDireccion());
-            ps.setInt(11, p.getTelefono());
-            ps.setString(12, p.getCorreo());
-            ps.setString(13, p.getRs());
-            ps.setString(14, p.getCv());
-            ps.executeUpdate();
-        }catch(Exception e){
+            ps = con.prepareCall(sql);
+            ps.setString(1, p.getNombres());
+            ps.setString(2, p.getApellidos());
+            ps.setString(3, p.getGenero());
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");//give format in which you are receiving the `String date_updated`
+            java.util.Date date = sdf.parse(p.getFechaNacimiento());
+            java.sql.Date sql_date = new java.sql.Date(date.getTime());
+            ps.setDate(4, sql_date);
+
+            ps.setString(5, p.getDocIdentidad());
+            ps.setInt(6, p.getPasaporte());
+            ps.setString(7, p.getNit());
+            ps.setString(8, p.getNup());
+            ps.setString(9, p.getDireccion());
+            ps.setString(10, p.getTelefono());
+            ps.setString(11, p.getCorreo());
+            ps.setString(12, p.getRutaCV());
+            ps.setString(13, p.getContrasena());
+            ps.execute();
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }

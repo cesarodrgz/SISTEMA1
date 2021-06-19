@@ -5,11 +5,10 @@
 --%>
 
 <%
-    /*
     session = request.getSession(false);    
-    if (session.getAttribute("User_ID") == null) {
+    if (session.getAttribute("USER_ID") == null || !(session.getAttribute("TIPO") == "POSTULANTE")) {
         response.sendRedirect("login.jsp");
-    }*/
+    }
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -17,17 +16,17 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@include file="bootstrap-links.jsp" %>
-        <link rel="stylesheet" href="estilo/assets/css/cv.css"/>
-        <link rel="stylesheet" href="estilo/assets/css/header.css"/>
-        <link rel="stylesheet" href="estilo/assets/css/footer.css" />
-        <link rel="stylesheet" href="estilo/assets/css/modal-form.css" />
-        <link rel="stylesheet" href="estilo/assets/css/botones.css" />
+        <%@include file="../WEB-INF/bootstrap-links.jsp" %>
+        <link rel="stylesheet" href="/SISTEMA1/estilo/assets/css/cv.css"/>
+        <link rel="stylesheet" href="/SISTEMA1/estilo/assets/css/header.css"/>
+        <link rel="stylesheet" href="/SISTEMA1/estilo/assets/css/footer.css" />
+        <link rel="stylesheet" href="/SISTEMA1/estilo/assets/css/modal-form.css" />
+        <link rel="stylesheet" href="/SISTEMA1/estilo/assets/css/botones.css" />
         <title>Curriculum</title>
     </head>
     <body>
         <header>
-            <%@include file="header.jsp" %>
+            <%@include file="../WEB-INF/header.jsp" %>
         </header>
         <div class="container my-5">
 
@@ -225,30 +224,30 @@
             </form>
         </div>
 
-        <%@include file="footer.jsp" %>
+        <%@include file="../WEB-INF/footer.jsp" %>
 
         <!-- Modal Conocimientos Academicos -->
 
-        <%@include  file="modals/ModalConocimientosAcademicos.jsp" %>    
+        <%@include  file="../modals/ModalConocimientosAcademicos.jsp" %>    
 
         <!--Modal Premios -->
-        <%@include file="modals/ModalPremios.jsp" %>
+        <%@include file="../modals/ModalPremios.jsp" %>
 
         <!--Modal Labor Social -->
-        <%@include file="modals/ModalLaborSocial.jsp" %>
+        <%@include file="../modals/ModalLaborSocial.jsp" %>
 
         <!--Modal Labor Social -->
-        <%@include file="modals/ModalLibros.jsp" %>
+        <%@include file="../modals/ModalLibros.jsp" %>
 
         <!--Modal Congreso -->
-        <%@include file="modals/ModalCongresos.jsp" %>
+        <%@include file="../modals/ModalCongresos.jsp" %>
 
         <!--Modal Certificacion -->
-        <%@include file="modals/ModalCertificaciones.jsp" %>
+        <%@include file="../modals/ModalCertificaciones.jsp" %>
 
     </body
     <scri<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="js/cv.js"></script>
+    <script src="/SISTEMA1/js/cv.js"></script>
 </html>
