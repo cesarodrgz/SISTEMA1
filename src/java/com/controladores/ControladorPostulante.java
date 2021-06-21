@@ -46,28 +46,6 @@ import org.apache.commons.io.IOUtils;
 @WebServlet(urlPatterns = {"/ControladorPostulante"})
 public class ControladorPostulante extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -80,10 +58,14 @@ public class ControladorPostulante extends HttpServlet {
                     cargarOfertas(request);
                     request.getRequestDispatcher("/postulante/ofertas.jsp").forward(request, response);
                     break;
+                case "/SISTEMA1/postulante/oferta":
+                    cargarOferta(request);
+                    request.getRequestDispatcher("/postulante/oferta.jsp").forward(request, response);
+                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();
-             request.getRequestDispatcher("404.jsp").forward(request, response);
+            request.getRequestDispatcher("404.jsp").forward(request, response);
         }
 
     }
@@ -95,10 +77,10 @@ public class ControladorPostulante extends HttpServlet {
         CallableStatement cs = con.prepareCall(sql);
         cs.registerOutParameter(1, OracleTypes.CURSOR);
         cs.execute();
-        ResultSet rs = (ResultSet)cs.getObject(1);
+        ResultSet rs = (ResultSet) cs.getObject(1);
         ArrayList<Oferta> listaOfertas = new ArrayList();
-        
-        while(rs.next()){
+
+        while (rs.next()) {
             Oferta oferta = new Oferta();
             oferta.setId(rs.getInt("idoferta"));
             oferta.setTitulo(rs.getString("titulo"));
@@ -119,8 +101,42 @@ public class ControladorPostulante extends HttpServlet {
             oferta.setEmpresa(empresa);
             listaOfertas.add(oferta);
         }
-        
+
         session.setAttribute("OFERTAS", listaOfertas);
+    }
+
+    private void cargarOferta(HttpServletRequest request) throws SQLException {
+        HttpSession session = request.getSession(false);
+        Connection con = new Conexion().getConnection();
+        String sql = "{ call obtenerOferta(?,?)}";
+        CallableStatement cs = con.prepareCall(sql);
+        cs.registerOutParameter(1, OracleTypes.CURSOR);
+        cs.setInt(2, Integer.parseInt(request.getParameter("id")));
+        cs.execute();
+        ResultSet rs = (ResultSet) cs.getObject(1);
+        Oferta oferta = new Oferta();
+        Empresa empresa = new Empresa();
+
+        while (rs.next()) {
+            oferta.setId(rs.getInt("idoferta"));
+            oferta.setTitulo(rs.getString("titulo"));
+            oferta.setDescripcion(rs.getString("descripcion"));
+            oferta.setJornadaLaboral(rs.getString("jornada_laboral"));
+            oferta.setTipoContrato(rs.getString("tipo_contrato"));
+            oferta.setSalario(rs.getDouble("salario"));
+            oferta.setCargo(rs.getString("cargo"));
+            empresa.setId(rs.getInt("idempresa"));
+            empresa.setNombre(rs.getString("nombre_empresa"));
+            empresa.setTelefono(rs.getString("telefono_empresa"));
+            empresa.setEmail(rs.getString("correo_empresa"));
+            empresa.setDireccion(rs.getString("direccion_empresa"));
+            empresa.setNit(rs.getString("nit"));
+            empresa.setPais(rs.getString("pais"));
+            empresa.setSector(rs.getString("sector"));
+            oferta.setEmpresa(empresa);
+        }
+
+        session.setAttribute("OFERTA", oferta);
     }
 
     @Override

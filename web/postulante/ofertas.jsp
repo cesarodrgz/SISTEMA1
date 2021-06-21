@@ -23,19 +23,21 @@
                     for (Oferta o : lista) {
                 %>
                 <div class="col-lg-6 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3><%= o.getTitulo()%></h3>
+                    <a href=<%= "/SISTEMA1/postulante/oferta?id=" + o.getId()%>>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3><%= o.getTitulo()%></h3>
+                            </div>
+                            <div class="card-body">
+                                <p>Empresa: <%= o.getEmpresa().getNombre()%> <span>(<%= o.getEmpresa().getPais()%>)</span></p>
+                                <p>Telefono: <%= o.getEmpresa().getTelefono()%></p>
+                                <p>Cargo: <%= o.getCargo()%></p>
+                            </div>
+                            <div class="card-footer">
+                                <p><%= o.getSalario()%> <span><%= o.getTipoContrato()%></span></p>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <p>Empresa: <%= o.getEmpresa().getNombre()%> <span>(<%= o.getEmpresa().getPais()%>)</span></p>
-                            <p>Telefono: <%= o.getEmpresa().getTelefono()%></p>
-                            <p>Cargo: <%= o.getCargo()%></p>
-                        </div>
-                        <div class="card-footer">
-                            <p><%= o.getSalario()%> <span><%= o.getTipoContrato()%></span></p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <%
                     }
