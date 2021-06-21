@@ -13,6 +13,15 @@ public class Oferta {
     private String jornadaLaboral;
     private String tipoContrato;
     private double salario;
+    private Empresa empresa;
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
     
     public Oferta() {
     }

@@ -159,7 +159,9 @@ public class ControladorEmpresa extends HttpServlet {
     }
 
     private Oferta crearOferta(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
         Oferta oferta = new Oferta();
+        oferta.setId((Integer)session.getAttribute("USER_ID"));
         oferta.setTitulo(request.getParameter("tituloOferta"));
         oferta.setCargo(request.getParameter("cargoOferta"));
         oferta.setTipoContrato(request.getParameter("tipoContratoOferta"));

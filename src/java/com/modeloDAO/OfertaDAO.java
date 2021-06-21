@@ -29,7 +29,7 @@ public class OfertaDAO {
         try {
             con = conexion.getConnection();
             cs = con.prepareCall(sql);
-            cs.setInt(1,1);
+            cs.setInt(1,o.getId());
             cs.setString(2,o.getTitulo());
             cs.setString(3,o.getDescripcion());
             cs.setString(4,o.getJornadaLaboral());

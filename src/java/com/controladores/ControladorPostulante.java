@@ -8,20 +8,31 @@ package com.controladores;
 import com.modeloDAO.EmpresaDAO;
 import com.modeloDAO.OfertaDAO;
 import com.modeloDAO.PostulanteDAO;
+import com.modelos.Conexion;
+import com.modelos.Empresa;
+import com.modelos.Oferta;
 import com.modelos.Postulante;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import oracle.jdbc.OracleTypes;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -60,22 +71,58 @@ public class ControladorPostulante extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        switch (request.getRequestURI()) {
-            case "/SISTEMA1/postulante/crear-cv":
-                request.getRequestDispatcher("/postulante/cv.jsp").forward(request, response);
-                break;
+        try {
+            switch (request.getRequestURI()) {
+                case "/SISTEMA1/postulante/crear-cv":
+                    request.getRequestDispatcher("/postulante/cv.jsp").forward(request, response);
+                    break;
+                case "/SISTEMA1/postulante/ofertas":
+                    cargarOfertas(request);
+                    request.getRequestDispatcher("/postulante/ofertas.jsp").forward(request, response);
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+             request.getRequestDispatcher("404.jsp").forward(request, response);
         }
 
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private void cargarOfertas(HttpServletRequest request) throws SQLException {
+        HttpSession session = request.getSession(false);
+        Connection con = new Conexion().getConnection();
+        String sql = "{ call obetenerOfertas(?)}";
+        CallableStatement cs = con.prepareCall(sql);
+        cs.registerOutParameter(1, OracleTypes.CURSOR);
+        cs.execute();
+        ResultSet rs = (ResultSet)cs.getObject(1);
+        ArrayList<Oferta> listaOfertas = new ArrayList();
+        
+        while(rs.next()){
+            Oferta oferta = new Oferta();
+            oferta.setId(rs.getInt("idoferta"));
+            oferta.setTitulo(rs.getString("titulo"));
+            oferta.setDescripcion(rs.getString("descripcion"));
+            oferta.setJornadaLaboral(rs.getString("jornada_laboral"));
+            oferta.setTipoContrato(rs.getString("tipo_contrato"));
+            oferta.setSalario(rs.getDouble("salario"));
+            oferta.setCargo(rs.getString("cargo"));
+            Empresa empresa = new Empresa();
+            empresa.setId(rs.getInt("idempresa"));
+            empresa.setNombre(rs.getString("nombre_empresa"));
+            empresa.setTelefono(rs.getString("telefono_empresa"));
+            empresa.setEmail(rs.getString("correo_empresa"));
+            empresa.setDireccion(rs.getString("direccion_empresa"));
+            empresa.setNit(rs.getString("nit"));
+            empresa.setPais(rs.getString("pais"));
+            empresa.setSector(rs.getString("sector"));
+            oferta.setEmpresa(empresa);
+            listaOfertas.add(oferta);
+        }
+        
+        session.setAttribute("OFERTAS", listaOfertas);
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
