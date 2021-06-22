@@ -5,13 +5,16 @@
  */
 package com.modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author rodez
  */
-public class Postulante {
+public class Postulante implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private int id;
     private String nombres;
     private String apellidos;
@@ -35,7 +38,7 @@ public class Postulante {
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
-    
+
     public int getId() {
         return id;
     }

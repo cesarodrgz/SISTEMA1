@@ -62,6 +62,10 @@ public class ControladorPostulante extends HttpServlet {
                     cargarOferta(request);
                     request.getRequestDispatcher("/postulante/oferta.jsp").forward(request, response);
                     break;
+                case "/SISTEMA1/postulante/mis-aplicaciones":
+                    cargarAplicaciones(request);
+                    request.getRequestDispatcher("/postulante/aplicaciones.jsp").forward(request, response);
+                    break;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -135,8 +139,31 @@ public class ControladorPostulante extends HttpServlet {
             empresa.setSector(rs.getString("sector"));
             oferta.setEmpresa(empresa);
         }
-
         session.setAttribute("OFERTA", oferta);
+    }
+
+    private void cargarAplicaciones(HttpServletRequest request) throws SQLException {
+        HttpSession session = request.getSession(false);
+        Connection con = new Conexion().getConnection();
+        String sql = "{ call obtenerOfertasPostulante(?,?)}";
+        CallableStatement cs = con.prepareCall(sql);
+        cs.registerOutParameter(1, OracleTypes.CURSOR);
+        cs.setInt(2, (Integer) session.getAttribute("USER_ID"));
+        cs.execute();
+        ResultSet rs = (ResultSet) cs.getObject(1);
+        ArrayList<Oferta> lista = new ArrayList();
+        while (rs.next()) {
+            Oferta oferta = new Oferta();
+            oferta.setId(rs.getInt("idoferta"));
+            oferta.setTitulo(rs.getString("titulo"));
+            oferta.setDescripcion(rs.getString("descripcion"));
+            oferta.setJornadaLaboral(rs.getString("jornada_laboral"));
+            oferta.setTipoContrato(rs.getString("tipo_contrato"));
+            oferta.setSalario(rs.getDouble("salario"));
+            oferta.setCargo(rs.getString("cargo"));
+            lista.add(oferta);
+        }
+        session.setAttribute("APLICACIONES", lista);
     }
 
     @Override

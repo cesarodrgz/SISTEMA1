@@ -12,6 +12,10 @@
         <servlet-name>ControladorPostulante</servlet-name>
         <servlet-class>com.controladores.ControladorPostulante</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControladorOferta</servlet-name>
+        <servlet-class>com.controladores.ControladorOferta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControladorEmpresa</servlet-name>
         <url-pattern>/ControladorEmpresa</url-pattern>
@@ -20,15 +24,15 @@
         <servlet-name>ControladorLogin</servlet-name>
         <url-pattern>/ControladorLogin</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ControladorEmpresa</servlet-name>
         <url-pattern>/empresa/mis-ofertas</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ControladorEmpresa</servlet-name>
         <url-pattern>/empresa/crear-oferta</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ControladorPostulante</servlet-name>
         <url-pattern>/postulante/crear-cv</url-pattern>
     </servlet-mapping>
@@ -36,12 +40,20 @@
         <servlet-name>ControladorPostulante</servlet-name>
         <url-pattern>/postulante/ofertas</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ControladorPostulante</servlet-name>
         <url-pattern>/postulante/oferta</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorPostulante</servlet-name>
+        <url-pattern>/postulante/mis-aplicaciones</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControladorOferta</servlet-name>
+        <url-pattern>/ControladorOferta</url-pattern>
+    </servlet-mapping>
     <session-config>
-<!--        <session-timeout>
+        <!--        <session-timeout>
             30
         </session-timeout>-->
     </session-config>

@@ -5,7 +5,10 @@
  */
 package com.modelos;
 
-public class Oferta {
+import java.io.Serializable;
+
+public class Oferta implements Serializable{
+    private static final long serialVersionUID = 1L;
     private int id;
     private String titulo;
     private String cargo;

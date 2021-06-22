@@ -1,13 +1,8 @@
-<%-- 
-    Document   : home
-    Created on : 06-12-2021, 07:18:02 PM
-    Author     : rodez
---%>
-
 <%
-    session = request.getSession(false);    
+    session = request.getSession(false);
     if (session.getAttribute("USER_ID") == null || !(session.getAttribute("TIPO") == "POSTULANTE")) {
-        response.sendRedirect("login.jsp");
+        System.out.println("Inicie session");
+        request.getRequestDispatcher("/SISTEMA1/login.jsp").forward(request, response);
     }
 %>
 

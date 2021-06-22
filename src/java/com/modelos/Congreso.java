@@ -5,13 +5,16 @@
  */
 package com.modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author rodez
  */
-public class Congreso {
+public class Congreso implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private int id;
     private String nombre;
     private String lugar;
@@ -69,5 +72,5 @@ public class Congreso {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
+
 }

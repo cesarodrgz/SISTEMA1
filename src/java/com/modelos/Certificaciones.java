@@ -5,11 +5,15 @@
  */
 package com.modelos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author rodez
  */
-public class Certificaciones {
+public class Certificaciones implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private int id;
     private String titulo;
     private String tipo;
@@ -58,5 +62,5 @@ public class Certificaciones {
     public void setInstitucion(String institucion) {
         this.institucion = institucion;
     }
-    
+
 }

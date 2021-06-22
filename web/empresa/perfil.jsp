@@ -1,7 +1,8 @@
 <%
     session = request.getSession(false);
     if (session.getAttribute("USER_ID") == null || !(session.getAttribute("TIPO") == "EMPRESA")) {
-        response.sendRedirect("login.jsp");
+        System.out.println("Inicie session");
+        request.getRequestDispatcher("/SISTEMA1/login.jsp").forward(request, response);
     }
 %>
 

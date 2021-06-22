@@ -5,20 +5,23 @@
  */
 package com.modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author rodez
  */
-public class ConocimientosAcademicos {
+public class ConocimientosAcademicos implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private int idConocimiento;
     private String tipo;
     private String nombreInstitucion;
     private String nombreTitulo;
     private Date fecha_inicio;
     private Date fecha_finalizacion;
-    
+
     public ConocimientosAcademicos() {
     }
 
@@ -69,5 +72,5 @@ public class ConocimientosAcademicos {
     public void setFecha_finalizacion(Date fecha_finalizacion) {
         this.fecha_finalizacion = fecha_finalizacion;
     }
-    
+
 }

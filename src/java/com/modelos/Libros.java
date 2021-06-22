@@ -5,16 +5,19 @@
  */
 package com.modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author rodez
  */
-public class Libros {
+public class Libros implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private int id;
     private String titulo;
-    private String lugarPublicacion; 
+    private String lugarPublicacion;
     private Date fechaPublicacion;
     private String edicion;
     private String isbn;
@@ -69,5 +72,5 @@ public class Libros {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-    
+
 }

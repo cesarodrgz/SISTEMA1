@@ -1,7 +1,8 @@
 <%
     session = request.getSession(false);
     if (session.getAttribute("USER_ID") == null || !(session.getAttribute("TIPO") == "EMPRESA")) {
-        response.sendRedirect("login.jsp");
+        System.out.println("Inicie session");
+        request.getRequestDispatcher("/SISTEMA1/login.jsp").forward(request, response);
     }
 %>
 <%@page import="java.util.ArrayList"%>
@@ -38,9 +39,9 @@
                         for (Oferta o : list) {
                     %>
                     <tr>
-                        <td><%= o.getTitulo() %></td>
-                        <td><%= o.getCargo() %></td>
-                        <td><%= o.getSalario() %></td>
+                        <td><%= o.getTitulo()%></td>
+                        <td><%= o.getCargo()%></td>
+                        <td><%= o.getSalario()%></td>
                         <td>Opciones</td>
                     </tr>
                     <%

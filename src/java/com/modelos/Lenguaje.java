@@ -5,11 +5,15 @@
  */
 package com.modelos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author rodez
  */
-public class Lenguaje {
+public class Lenguaje implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private int id;
     private String escritura;
     private String lectura;
@@ -58,5 +62,5 @@ public class Lenguaje {
     public void setEscucha(String escucha) {
         this.escucha = escucha;
     }
-    
+
 }

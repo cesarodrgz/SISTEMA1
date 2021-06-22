@@ -5,11 +5,15 @@
  */
 package com.modelos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author rodez
  */
-public class LaboresSociales {
+public class LaboresSociales implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private int id;
     private String nombre;
     private String descripcion;
@@ -40,6 +44,5 @@ public class LaboresSociales {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    
+
 }

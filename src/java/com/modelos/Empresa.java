@@ -5,7 +5,11 @@
  */
 package com.modelos;
 
-public class Empresa {
+import java.io.Serializable;
+
+public class Empresa implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private int id;
     private String nombre;
     private String telefono;
@@ -99,5 +103,5 @@ public class Empresa {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
+
 }

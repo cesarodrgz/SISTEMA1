@@ -16,7 +16,7 @@
           <a class="nav-link" href="/SISTEMA1/postulante/ofertas">Ver Ofertas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Notificaciones</a>
+          <a class="nav-link" href="/SISTEMA1/postulante/mis-aplicaciones">Mis Aplicaciones</a>
         </li>
       </ul>
     </div>
