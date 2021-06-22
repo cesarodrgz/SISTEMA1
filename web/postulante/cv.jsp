@@ -21,14 +21,14 @@
     </head>
     <body>
         <header>
-            <%@include file="../WEB-INF/header.jsp" %>
+            <%@include file="../WEB-INF/headerPOST.jsp" %>
         </header>
         <div class="container my-5">
 
             <form id="CurriculumForm" action="controladorCurriculum" method="post">
                 <!-- Seccion de Conocimientos Academicos -->
                 <div class="card">
-                    <div class="card-header"">
+                    <div class="card-header">
                         <h2>Conocimientos Academicos</h2>
                     </div>
                     <div id="card-conocimientos-academicos" class="card-body">

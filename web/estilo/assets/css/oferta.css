@@ -23,7 +23,7 @@ html,body{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    color:white;
+    color: black;
     font-weight: bold;
     font-size:2rem;
 }
