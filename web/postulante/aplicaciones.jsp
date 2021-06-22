@@ -12,14 +12,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="../WEB-INF/bootstrap-links.jsp" %>
-        <title>JSP Page</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Aplicaciones</title>
+        <link rel="stylesheet" href="../estilo/assets/css/header.css" />
+        <link rel="stylesheet" href="../estilo/assets/css/footer.css" />
+        <link rel="stylesheet" href="../estilo/assets/css/botones.css" />
+        
     </head>
     <body>
-        <h1>Mis aplicaciones</h1>
+        <header>
+            <%@include file="../WEB-INF/headerPOST.jsp" %>
+        </header>
         <div class="container">
             <div class="row">
+                <h1>Mis aplicaciones</h1>
                 <div class="col-12">
                     <%
                         if (lista.isEmpty()) {
@@ -28,7 +37,7 @@
                     <%
                     } else {
                     %>
-                    <table class="table">
+                    <table class="table table-striped table-hover table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col">Titulo</th>
@@ -41,7 +50,7 @@
                             <%
                                 for (Oferta o : lista) {
                             %>
-                            <tr>
+                            <tr >
                                 <th scope="row"><%= o.getTitulo()%></th>
                                 <td><%= o.getCargo()%></td>
                                 <td><%= o.getTipoContrato()%></td>
@@ -58,5 +67,8 @@
                 </div>
             </div>
         </div>
+        <%@include file="../WEB-INF/footer.jsp" %>
     </body>
 </html>
+<!--Bundle-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

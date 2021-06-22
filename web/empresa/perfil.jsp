@@ -6,11 +6,12 @@
     }
 %>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Oferta</title>
         <%@include file="../WEB-INF/bootstrap-links.jsp" %>
         <link rel="stylesheet" href="/SISTEMA1/estilo/assets/css/header.css" />
@@ -19,11 +20,11 @@
     </head>
     <body>
         <header>
-            <%@include file="../WEB-INF/header.jsp" %>
+            <%@include file="../WEB-INF/headerEMP.jsp" %>
         </header>
         <div class="container my-5">
             <form method="POST" action="/SISTEMA1/ControladorEmpresa">
-                <div class="card">
+                <div class="card border-primary">
                     <div class="card-header">
                         <h3>Datos Oferta</h3>
                     </div>
@@ -75,8 +76,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card">
+                </div><br>
+                <div class="card border-success">
                     <div class="card-header">
                         <h3>Requerimientos</h3>
                     </div>
